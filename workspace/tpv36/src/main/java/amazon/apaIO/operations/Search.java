@@ -38,6 +38,10 @@ public class Search {
     {
     	this.parameter.put("Keywords",  keywords);
     }
+    public String getKeywords()
+    {
+    	return this.parameter.get("Keywords");
+    }
     /**
      * Sets the response group
      */

@@ -12,7 +12,8 @@
 		response.sendRedirect("./index.jsp");
 	} else {
 		CatalogueManager catalogueManager = (CatalogueManager) application.getAttribute("catalogueManager");
-		List<Article> articles = catalogueManager.getArticles();
+		List<Article> articles = catalogueManager.getArticles(request.getParameter("recherchee"));
+		System.out.println(request.getParameter("recherchee"));
 		Iterator<Article> listeDesArticles;
 		Livre livre = null;
 		Musique musique = null;
@@ -31,8 +32,10 @@
 		</li>
 		<div id="menu-item-290"
 			class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item">
-			<input type="text"> </input>
-			<button type="button">RECHERCHER</button>
+			<form action="afficheRecherche.jsp" method="post">
+			<input type="text" name="recherchee" value="aya"> </input>
+			<button type="submit">RECHERCHE</button>
+			</form>
 		</div>
 	</ul>
 </nav>

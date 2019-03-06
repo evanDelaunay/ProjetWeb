@@ -31,6 +31,7 @@ import com.zeloon.deezer.domain.internal.search.SearchArtist;
 import amazon.apaIO.ApaiIO;
 import amazon.apaIO.configuration.GenericConfiguration;
 import amazon.apaIO.operations.Search;
+import amazon.apaIO.request.rest.Request;
 import commerce.catalogue.domaine.modele.Livre;
 import commerce.catalogue.domaine.modele.Musique;
 import commerce.catalogue.domaine.modele.Piste;
@@ -72,7 +73,7 @@ public class InitAmazon {
 		Search search = new Search();
 		search.setCategory("Music"); //Books
 		search.setResponseGroup("Offers,ItemAttributes,Images") ;
-		String keywords = "Ibrahim Maalouf" ;
+		String keywords = "aya" ;
 		search.setKeywords(keywords);
 
 		Livre livre ;

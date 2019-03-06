@@ -92,7 +92,7 @@ public class CatalogueManager {
 	public void setArticles(List inArticles) throws Exception {
 		articles = inArticles;
 	}
-	public List getArticles() throws Exception {
+	public List getArticles(String keyword) throws Exception {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession() ;
 		try {
 			session.beginTransaction();
@@ -105,7 +105,7 @@ public class CatalogueManager {
 					query.setParameter("paramMotCle", "%illUsiOns%") ;*/
 			//Question 6.3 td3
 					Query query = session.createQuery("from commerce.catalogue.domaine.modele.Article as a where "
-							+"a.prix>10 and a.prix<15") ;
+							+"a.titre LIKE '"+keyword+"%'") ;
 			articles = query.list() ;
 			session.getTransaction().commit();
 		}
