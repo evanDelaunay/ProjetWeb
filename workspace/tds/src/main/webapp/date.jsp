@@ -1,0 +1,1 @@
+<%@ page contentType="text/plain; charset=UTF-8"%><%@ page pageEncoding="UTF-8"%><%@ page import="java.util.Date,java.text.SimpleDateFormat" %><%=new SimpleDateFormat("HH:mm:ss").format(new Date())%>

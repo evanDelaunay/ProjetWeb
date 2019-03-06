@@ -1,0 +1,82 @@
+package commerce.gestion;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import commerce.catalogue.domaine.modele.Livre;
+
+public class Panier {
+	private double total;
+	private ArrayList<LignePanier> lignesPanier;
+
+	public Panier() {
+		this.total = 0.0;
+		this.lignesPanier = new ArrayList<>();
+	}
+
+	public void setTotal() {
+		recalculer();
+	}
+
+	public double getTotal() {
+		recalculer();
+		return total;
+	}
+
+	public List<LignePanier> getLignesPanier() {
+		return lignesPanier;
+	}
+
+	public void recalculer() {
+		this.total = 0;
+		for (LignePanier lignePanier : lignesPanier) {
+			this.total += lignePanier.getPrixTotal();
+		}
+	}
+
+	public void ajouterLigne(Livre inLivre) {		
+		LignePanier lignePanier = new LignePanier();
+		lignePanier.setLivre(inLivre);
+		lignePanier.setQuantite(1);
+		
+		for (LignePanier lignePanierM : lignesPanier) {
+			if (lignePanier.equals(lignePanierM)) {
+				lignePanier.setQuantite(lignePanier.getQuantite()+1);
+			}
+		}
+		lignesPanier.add(lignePanier);
+		this.recalculer();
+	}
+
+	public LignePanier chercherLignePanier(Livre inLivre) {
+		return null;
+	}
+
+	public void supprimerLigne(String inRefLivre) {
+		
+	}
+
+	public void viderPanier() {
+		lignesPanier.clear();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Panier other = (Panier) obj;
+		if (lignesPanier == null) {
+			if (other.lignesPanier != null)
+				return false;
+		} else if (!lignesPanier.equals(other.lignesPanier))
+			return false;
+		if (Double.doubleToLongBits(total) != Double.doubleToLongBits(other.total))
+			return false;
+		return true;
+	}
+
+}

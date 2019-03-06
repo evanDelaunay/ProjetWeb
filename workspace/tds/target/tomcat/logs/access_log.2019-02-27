@@ -1,0 +1,14 @@
+127.0.0.1 - - [27/Feb/2019:09:20:36 +0100] "GET / HTTP/1.1" 404 - http-bio-8080-exec-1 0
+127.0.0.1 - - [27/Feb/2019:09:20:44 +0100] "GET /testPanier1.jsp HTTP/1.1" 404 - http-bio-8080-exec-3 0
+127.0.0.1 - - [27/Feb/2019:09:21:12 +0100] "GET /tds/testPanier1.jsp HTTP/1.1" 200 26 http-bio-8080-exec-4 6510
+127.0.0.1 - - [27/Feb/2019:09:21:12 +0100] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-6 0
+127.0.0.1 - - [27/Feb/2019:09:26:09 +0100] "GET /tds/testPanier1.jsp HTTP/1.1" 200 26 http-bio-8080-exec-8 44
+127.0.0.1 - - [27/Feb/2019:09:26:10 +0100] "GET /tds/testPanier1.jsp HTTP/1.1" 200 26 http-bio-8080-exec-10 5
+127.0.0.1 - - [27/Feb/2019:09:26:10 +0100] "GET /tds/testPanier1.jsp HTTP/1.1" 200 26 http-bio-8080-exec-10 5
+127.0.0.1 - - [27/Feb/2019:09:26:10 +0100] "GET /tds/testPanier1.jsp HTTP/1.1" 200 26 http-bio-8080-exec-10 3
+127.0.0.1 - - [27/Feb/2019:09:31:06 +0100] "GET /tds/testPanier1.jsp HTTP/1.1" 200 122 http-bio-8080-exec-1 6044
+127.0.0.1 - - [27/Feb/2019:09:33:58 +0100] "GET /tds/testPanier2.jsp HTTP/1.1" 200 579 http-bio-8080-exec-4 859
+127.0.0.1 - - [27/Feb/2019:09:58:27 +0100] "GET /tds/testPanier1.jsp HTTP/1.1" 200 122 http-bio-8080-exec-1 5699
+127.0.0.1 - - [27/Feb/2019:09:58:45 +0100] "GET /tds/testPanier12jsp HTTP/1.1" 404 989 http-bio-8080-exec-3 4
+127.0.0.1 - - [27/Feb/2019:09:58:50 +0100] "GET /tds/testPanier2jsp HTTP/1.1" 404 987 http-bio-8080-exec-5 1
+127.0.0.1 - - [27/Feb/2019:10:00:48 +0100] "GET /tds/testPanier2.jsp HTTP/1.1" 200 553 http-bio-8080-exec-7 126
