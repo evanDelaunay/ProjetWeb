@@ -44,7 +44,7 @@ public class InitAmazon {
 		this.catalogueManager = catalogueManager ;
 	}
 
-	public void init() {
+	public void init(String keyword) {
 		// Lien pour obtenir la clé d'accès et la clé secrète auprès d'Amazon.
 		// https://portal.aws.amazon.com/gp/aws/securityCredentials
 		/*
@@ -73,7 +73,7 @@ public class InitAmazon {
 		Search search = new Search();
 		search.setCategory("Music"); //Books
 		search.setResponseGroup("Offers,ItemAttributes,Images") ;
-		String keywords = "aya" ;
+		String keywords = keyword ;
 		search.setKeywords(keywords);
 
 		Livre livre ;

@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ include file="enTetePage.html"%>
-<%@ page import="commerce.catalogue.service.CatalogueManager"%>
+<%@ page import="commerce.catalogue.service.*"%>
 <%@ page import="commerce.catalogue.domaine.modele.Article"%>
 <%@ page import="commerce.catalogue.domaine.modele.Livre"%>
 <%@ page import="commerce.catalogue.domaine.modele.Musique"%>
@@ -12,8 +12,16 @@
 		response.sendRedirect("./index.jsp");
 	} else {
 		CatalogueManager catalogueManager = (CatalogueManager) application.getAttribute("catalogueManager");
-		List<Article> articles = catalogueManager.getArticles(request.getParameter("recherchee"));
-		System.out.println(request.getParameter("recherchee"));
+		List<Article> articles = null;
+		if(request.getParameter("recherchee") != null){
+			String recherche = request.getParameter("recherchee");
+			new InitAmazon(catalogueManager).init(recherche) ;
+			articles = catalogueManager.rechercher(recherche);
+			System.out.println(request.getParameter(recherche));
+		}
+		else{
+			articles = catalogueManager.getArticles();
+		}
 		Iterator<Article> listeDesArticles;
 		Livre livre = null;
 		Musique musique = null;
@@ -33,7 +41,7 @@
 		<div id="menu-item-290"
 			class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item">
 			<form action="afficheRecherche.jsp" method="post">
-			<input type="text" name="recherchee" value="aya"> </input>
+			<input type="text" name="recherchee"> </input>
 			<button type="submit">RECHERCHE</button>
 			</form>
 		</div>

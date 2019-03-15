@@ -92,11 +92,11 @@ public class CatalogueManager {
 	public void setArticles(List inArticles) throws Exception {
 		articles = inArticles;
 	}
-	public List getArticles(String keyword) throws Exception {
+	public List getArticles() throws Exception {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession() ;
 		try {
 			session.beginTransaction();
-			//Query query = session.createQuery("from commerce.catalogue.domaine.modele.Article") ;
+			Query query = session.createQuery("from commerce.catalogue.domaine.modele.Article") ;
 			//Question 6.1 td3
 			//Query query = session.createQuery("from commerce.catalogue.domaine.modele.Livre") ;
 			//Question 6.2 td3
@@ -104,8 +104,8 @@ public class CatalogueManager {
 					+" upper(m.titre) like upper(:paramMotCle)") ;
 					query.setParameter("paramMotCle", "%illUsiOns%") ;*/
 			//Question 6.3 td3
-					Query query = session.createQuery("from commerce.catalogue.domaine.modele.Article as a where "
-							+"a.titre LIKE '"+keyword+"%'") ;
+					//Query query = session.createQuery("from commerce.catalogue.domaine.modele.Piste as a where "
+						//	+"a.titre LIKE '"+keyword+"%'") ;
 			articles = query.list() ;
 			session.getTransaction().commit();
 		}
@@ -115,5 +115,22 @@ public class CatalogueManager {
 			throw e; 
 		}
 		return articles ;
+	}
+	
+	public List rechercher(String recherche) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession() ;
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("from commerce.catalogue.domaine.modele.Article as a where UPPER(a.titre) LIKE UPPER("+recherche+"'%') OR UPPER(a.artiste) LIKE UPPER("+recherche+"'%') ") ;
+			articles = query.list() ;
+			session.getTransaction().commit();
+		}
+		catch (RuntimeException e) {
+			if (session.getTransaction() != null)
+				session.getTransaction().rollback();
+			throw e; 
+		}
+		return articles ;
+		
 	}
 }
